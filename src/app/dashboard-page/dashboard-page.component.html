@@ -1,0 +1,80 @@
+<app-auth-page *ngIf="!authService.isAuthenticated()"></app-auth-page>
+
+<div class="container">
+  <header class="header">
+    <a class="header__logo" routerLink="/dashboard">
+      <img alt="" src="./assets/logo.png">
+      <h1>Таблица</h1>
+    </a>
+
+    <div class="header__btn">
+      <button
+        *ngIf="!authService.isAuthenticated()"
+        class="btn btn-primary"
+      >Войти
+      </button>
+      <button
+        (click)="authService.logout()"
+        *ngIf="authService.isAuthenticated()"
+        class="btn btn-danger"
+        href="#"
+      >Выйти
+      </button>
+    </div>
+
+  </header>
+
+</div>
+<div class="dashboard">
+  <div class="create">
+    <div class="container">
+      <h2 class="title">
+        Создать таблицу
+      </h2>
+
+      <div class="create__box">
+        <div (click)="create($event)" class="create__icon">
+          <mat-icon>add</mat-icon>
+        </div>
+      </div>
+      <div class="create__description">
+        <p>Пустой файл</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="list">
+    <div class="container">
+      <div class="list__header">
+        <span>Название</span>
+        <span>Дата</span>
+      </div>
+      <ul *ngIf="tables; else info" class="list__item ">
+        <li *ngFor="let table of tables">
+          <a (click)="onClick(table.id)">
+            <span>{{ table.title }}</span>
+            <span>{{ table.date | date:'MMMM d, y' }}</span>
+          </a>
+          <button (click)="remove(table.id)" class="btn-remove">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </li>
+      </ul>
+      <ng-template #info>
+        <div class="text-center">
+          <small>У вас пока нет таблиц</small>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="load">
+        <p class="text-center">Загрузка...</p>
+      </ng-template>
+    </div>
+  </div>
+  <div *ngIf="storeService.loading" class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+
+

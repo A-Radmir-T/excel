@@ -1,0 +1,55 @@
+@import "src/variabels";
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 0px 10px;
+}
+
+.header__logo {
+  margin-right: 10px;
+
+  img {
+    max-height: 40px;
+    max-width: 40px;
+    cursor: pointer;
+  }
+}
+
+.header__form {
+  color: #777;
+  margin-right: 10px;
+
+  input {
+    min-width: 1px;
+    border: 1px solid transparent;
+    overflow: hidden;
+    min-height: 26px;
+    font-size: 18px;
+    padding: 4px 7px;
+    border-radius: 3px;
+
+    &:hover {
+      border: 1px solid #ccc;
+    }
+
+    &:focus {
+      border: 2px solid #000;
+    }
+  }
+}
+
+.icon__box {
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+

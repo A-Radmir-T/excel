@@ -1,0 +1,386 @@
+/* You can add global styles to this file, and also import other style files */
+@import "src/variabels";
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  min-height: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 14px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+  user-select: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+
+.header__input {
+  min-width: 50px;
+  margin: 3px;
+  padding: 3px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #000;
+
+  &:hover {
+    border: 1px solid #ccc;
+  }
+
+  &:focus {
+    outline: 2px solid blue;
+  }
+}
+
+.icon__box {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 3px;
+
+  &:disabled {
+    mat-icon {
+      color: rgba(0, 0, 0, 0.2);
+      cursor: not-allowed;
+    }
+  }
+
+  mat-icon {
+    font-size: 20px;
+    line-height: 23px;
+    cursor: pointer;
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.7);
+
+    &:hover {
+      background-color: rgba(204, 204, 204, 0.42);
+    }
+
+    &.active {
+      background-color: rgb(103 177 103 / 17%);
+      color: rgb(36 132 36);
+    }
+  }
+}
+
+.excel {
+  position: relative;
+}
+
+.table {
+  font-size: 13px;
+  position: absolute;
+  overflow-x: auto;
+  left: 0;
+  right: 0;
+  top: $header-height+$formula-height+$toolbar-height;
+}
+
+.row {
+  display: flex;
+  min-height: 20px;
+
+  & > .row-resize {
+    display: none;
+  }
+}
+
+.row-info {
+  position: relative;
+  display: flex;
+  max-width: 46px;
+  min-width: 46px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(217, 217, 217, 0.33);
+  border-right: 1px solid rgba(126, 126, 126, 0.65);
+  border-bottom: 1px solid rgba(126, 126, 126, 0.65);
+}
+
+.row-start {
+  border-right: 4px solid #ccc;
+  border-bottom: 4px solid #ccc;
+}
+
+.row-data {
+  display: flex;
+}
+
+.column {
+  position: relative;
+  border-right: 1px solid rgba(126, 126, 126, 0.65);
+  border-bottom: 1px solid rgba(126, 126, 126, 0.65);
+  background-color: rgb(209 213 214 / 37%);
+  width: 120px;
+  min-height: 24px;
+  text-align: center;
+}
+
+.cell {
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-left: 3px;
+  overflow: visible;
+  min-width: 40px;
+  min-height: 24px;
+  width: 120px;
+  white-space: nowrap;
+  outline: none;
+  cursor: default;
+}
+
+.row-resize, .col-resize {
+  position: absolute;
+  background-color: transparent;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(0, 0, 255, 0.58);
+  }
+}
+
+.row-resize {
+  left: 0;
+  height: 4px;
+  cursor: row-resize;
+}
+
+.row-resize.active {
+  background-color: rgba(0, 0, 255, 0.58);
+
+  &::after {
+    position: absolute;
+    content: '';
+    background-color: rgba(0, 0, 255, 0.58);
+    bottom: 1px;
+    min-width: 1000vh;
+    height: 1px;
+  }
+}
+
+.col-resize {
+  top: 0;
+  width: 4px;
+  right: -1px;
+  cursor: col-resize;
+}
+
+.col-resize.active {
+  background-color: rgba(0, 0, 255, 0.58);
+
+  &::after {
+    position: absolute;
+    content: '';
+    background-color: rgba(0, 0, 255, 0.58);
+    right: 1px;
+    width: 1px;
+    min-height: 1000vh;
+  }
+}
+
+[id='0'] {
+  .row-resize {
+    display: none;
+  }
+}
+
+
+.selected-group {
+  background-color: rgba(124, 176, 255, 0.21) !important;
+}
+
+.b-none {
+  border: none;
+}
+
+.right {
+  border-right: 1px solid #ccc;
+}
+
+.bottom {
+  border-bottom: 1px solid #ccc;
+}
+
+.b-top-1px {
+  border-top: 1px solid blue;
+}
+
+.b-right-1px {
+  border-right: 1px solid blue;
+}
+
+.b-left-1px {
+  border-left: 1px solid blue;
+}
+
+.b-bottom-1px {
+  border-bottom: 1px solid blue;
+}
+
+.b-top-2px {
+  border-top: 2px solid blue;
+}
+
+.b-right-2px {
+  border-right: 2px solid blue;
+}
+
+.b-left-2px {
+  border-left: 2px solid blue;
+}
+
+.b-bottom-2px {
+  border-bottom: 2px solid blue;
+}
+
+
+.selected {
+  border: 2px solid blue;
+  cursor: text;
+}
+
+.bg-sel {
+  background-color: rgb(165 172 173 / 41%);
+}
+
+.btn {
+  background-color: #ccc;
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  color: #000;
+
+  &:disabled {
+    background: #ccc;
+    color: #000;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background-color: #48a04e;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.btn-danger {
+  background-color: rgb(255 4 4 / 80%);
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.alert {
+  background-color: rgba(255, 255, 255, 0.38);
+  padding: 10px;
+  text-align: center;
+}
+
+.alert__danger {
+  color: #ff0505;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  bottom: 0px;
+  right: 0;
+
+  mat-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+
+
+
+

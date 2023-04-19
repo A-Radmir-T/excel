@@ -1,0 +1,69 @@
+@import "src/variabels";
+
+.toolbar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: $header-height;
+  height: $toolbar-height;
+  padding: 0px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+mat-icon {
+  line-height: 26px;
+  background-color: #fff;
+}
+
+.icon {
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  li + li {
+    margin-left: 5px;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  width: 172px;
+  z-index: 20;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  border-radius: 6px;
+  left: 0px;
+
+  li {
+    margin: 5px;
+  }
+
+  .item {
+    width: 20px;
+    height: 20px;
+    background-color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: '✔';
+    }
+  }
+}
+
+.dropdown-box {
+  position: relative;
+}
+
+.c-w {
+  color: #fff;
+}
+

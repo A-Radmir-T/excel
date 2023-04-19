@@ -1,0 +1,53 @@
+<div
+  (click)="onEvent($event)"
+  (keyup)="onEvent($event)"
+  appKeydownTable
+  appKeyupTable
+  appMousedownTable
+  appResizeTable
+  appSelectCell
+  class="table"
+>
+
+  <div class="row" id="0">
+
+    <div class="row-info row-start">
+      <div class="row-resize"></div>
+    </div>
+
+    <div class="row-data">
+      <app-col
+        #colRef
+        *ngFor="let col of cols; let idx = index"
+        [col]="col | getFromCharCode"
+      ></app-col>
+    </div>
+
+  </div>
+
+  <div
+    *ngFor="let row of rows; let numRow = index"
+    [attr.data-row]="numRow + 1"
+    class="row"
+  >
+
+    <div (mousedown)="$event.preventDefault()" [id]="numRow + 1" class="row-info">
+      {{ numRow + 1 }}
+      <div [attr.data-resize]="numRow + 1" appResizeRow class="row-resize" data-type="row"></div>
+    </div>
+
+    <div class="row-data">
+      <app-cell
+        #cellRef
+        *ngFor="let col of cols; let numCol = index"
+        [col]="col | getFromCharCode"
+        [numCol]="numCol + 1"
+        [numRow]="numRow + 1"
+      ></app-cell>
+    </div>
+
+
+  </div>
+
+
+</div>
